@@ -3,6 +3,7 @@
 # @since: 17/4/22
 # @desc:
 
+# ------------------- 1. 列表、元组 -------------------
 c = [1, 'abc', [1, 2]]
 '''
 c是一个列表，列表的第一个元素是整型1，第二个元素是字符串abc，第三个元素是列表[1, 2]
@@ -45,3 +46,44 @@ print '向列表a的索引2位置插入值10：%s' % a
 a.pop(2)
 print "移除列表a的索引2的元素：%s" % a
 
+# ------------------- 2. 字典 -------------------
+d = {'today': 20, 'tomorrow': 30}
+print '字典：%s' % d
+print d['today']
+
+# ------------------- 3. 集合 -------------------
+a = set([1, 2, 2, 3])
+print a
+a = {1, 2, 2, 3}
+print a
+
+b = {3, 4, 5, 6}
+
+c = a | b
+print "a与b的并集：%s" % c
+c = a & b
+print "a与b的交集：%s" % c
+c = a - b
+print "a与b的差集（项在a中，不在b中）：%s" % c
+c = a ^ b
+print "a与b的补集：%s" % c
+
+# ------------------- 4. 函数式编程 -------------------
+a = [1, 2, 3]
+b = [i + 2 for i in a]
+print 'List a:%s, List b:%s ' % (a, b)
+b = map(lambda x: x + 2, a)
+print b
+b = list(b)  # python 3.x中需要这一步，「求值」
+print b
+
+'''
+reduce(func, 
+'''
+print 'f(x,y) = x * y:%d' % reduce(lambda x, y, z: x * y * z, (1, 2, 3))
+print 'f(x,y) = x * y:%d' % reduce(lambda x, y: x * y, range(1, 10))
+'''等价于下面'''
+s = 1
+for i in range(1, 10):
+    s *= i
+print s
